@@ -1,0 +1,50 @@
+<!-- sp:pagelayer/pl_row {"stretch":"auto","col_gap":"10","width_content":"auto","row_height":"default","overlay_hover_delay":"400","row_shape_top_color":"#fff","row_shape_top_width":"100","row_shape_top_height":"100","row_shape_bottom_color":"#fff","row_shape_bottom_width":"100","row_shape_bottom_height":"100","ele_bg_type":"image","ele_bg_color":"#242c42ff","ele_padding":"4em,0em,4em,0em","ele_padding_mobile":"20px,0px,20px,0px","ele_padding_tablet":"30px,0px,30px,0px","ele_bg_attachment":"scroll","ele_bg_posx":"center","ele_bg_posy":"center","ele_bg_repeat":"no-repeat","ele_bg_size":"cover","overlay_transperancy":"0.7","overlay_color":"#242c42ff","parallax_img":"","ele_img_color":"","ele_margin":"0px,0px,0px,0px","overlay_type":"color","ele_bg_img":"{{theme_url}}\/images\/footer-bg.jpg","pagelayer-id":"ab03747"} -->
+<!-- sp:pagelayer/pl_col {"widget_space":"10","overlay_hover_delay":"400","col_width_mobile":"100","col_width_tablet":"20","col":"4","ele_padding_tablet":"1em,0em,0em,0em","pagelayer-id":"fcj8720"} -->
+<!-- sp:pagelayer/pl_wp_title {"site_name":"Consultech","site_title_state":"normal","text-align":"left","logo_img_size":"custom","align":"left","vertical_align":"top","logo_img_type":"custom-logo","title_color":"#ff5722ff","logo_img_custom_size":"21","title_padding":"0,0,0,0","site_title_style_mobile":",35,,,,,Solid,,,,","site_title_style_tablet":",38,,,,,Solid,,,,","logo_img_custom_size_tablet":"8","ele_padding_mobile":"0px,0px,0px,0px","logo_img_custom_size_mobile":"15","site_logo":"true","logo_img":"{{theme_url}}\/images\/footer-logo.png","site_title_style":",35,,,,,Solid,,,,","pagelayer-id":"tzz2353"} /-->
+<!-- sp:pagelayer/pl_heading {"heading_state":"normal","color":"#ffffffff","ele_padding":"4px,0px,0px,0px","text":"\u003cp\u003eLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna quis nostrud exercitation ullamco laboris .\n\u003c\/p\u003e","pagelayer-id":"quc3655"} --><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna quis nostrud exercitation ullamco laboris .
+</p><!-- /sp:pagelayer/pl_heading -->
+<!-- sp:pagelayer/pl_share_grp {"type":"icon","bg_shape":"pagelayer-social-shape-square","align":"left","vspace":"2","hspace":"3","height":"30","icon_size":"13","icon_space":"9","color_scheme":"","icon_color":"#ffffffff","social_hover_delay":"400","name_typo":",15,,,,,solid,,,,","icon_bg_color":"#ff5722ff","align_tablet":"left","align_mobile":"left","ele_padding":"7px,0px,0px,0px","ele_margin":"0px,0px,0px,-3px","social_hover":"","icon_color_hover":"#ff5722ff","icon_bg_color_hover":"#ffffffff","pagelayer-id":"3an5139"} -->
+<!-- sp:pagelayer/pl_share {"icon":"fab fa-facebook-f","pagelayer-id":"61j5466"} /-->
+<!-- sp:pagelayer/pl_share {"icon":"fab fa-twitter","pagelayer-id":"cbi9535"} /-->
+<!-- sp:pagelayer/pl_share {"icon":"fab fa-instagram","pagelayer-id":"jyv5354"} /-->
+<!-- sp:pagelayer/pl_share {"icon":"fab fa-linkedin-in","pagelayer-id":"9q49678"} /-->
+<!-- sp:pagelayer/pl_share {"icon":"fab fa-pinterest-p","pagelayer-id":"9h85418"} /-->
+<!-- /sp:pagelayer/pl_share_grp -->
+<!-- /sp:pagelayer/pl_col -->
+<!-- sp:pagelayer/pl_col {"widget_space":"10","overlay_hover_delay":"400","col_width_mobile":"100","col_width_tablet":"20","col":"4","ele_padding_tablet":"0em,0em,0em,0em","pagelayer-id":"1vz5652"} -->
+<!-- sp:pagelayer/pl_heading {"heading_state":"normal","color":"#ffffffff","heading_typo_mobile":",25,,,,,Solid,,,,","ele_margin":"0px,0px,0px,0px","ele_padding":"0px,0px,14px,0px","ele_padding_tablet":"0px,0px,0px,0px","ele_padding_mobile":"0px,0px,0px,0px","text":"\u003ch4\u003eFeatured Links\u003c\/h4\u003e","pagelayer-id":"v1g3832"} --><h4>Featured Links</h4><!-- /sp:pagelayer/pl_heading -->
+<!-- sp:pagelayer/pl_inner_row {"stretch":"auto","col_gap":"1","width_content":"auto","row_height":"default","overlay_hover_delay":"400","row_shape_top_color":"#227bc3","row_shape_top_width":"100","row_shape_top_height":"100","row_shape_bottom_color":"#e44993","row_shape_bottom_width":"100","row_shape_bottom_height":"100","pagelayer-id":"0z34705"} -->
+<!-- sp:pagelayer/pl_inner_col {"overlay_hover_delay":"400","col":"6","pagelayer-id":"78h3294"} -->
+<!-- sp:pagelayer/pl_list {"list_type":"none","spacing":"10","list_text_state":"normal","item_indent":"10","list_icon_state":"normal","icon_color":"#ff5722ff","icon_border_type":"","icon_border_color":"#cbd2dc78","icon_border_width":"3","icon_size":"12","list_color":"#fefefeff","pagelayer-id":"81i8355"} -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"Graduation","pagelayer-id":"vz53791"} -->Graduation<!-- /sp:pagelayer/pl_list_item -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"Admissions","pagelayer-id":"cnn5190"} -->Admissions<!-- /sp:pagelayer/pl_list_item -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"Alumini","pagelayer-id":"xm87146"} -->Alumini<!-- /sp:pagelayer/pl_list_item -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"Book Store","pagelayer-id":"83t6794"} -->Book Store<!-- /sp:pagelayer/pl_list_item -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"Teachers","pagelayer-id":"xvr8019"} -->Teachers<!-- /sp:pagelayer/pl_list_item -->
+<!-- /sp:pagelayer/pl_list -->
+<!-- /sp:pagelayer/pl_inner_col -->
+<!-- sp:pagelayer/pl_inner_col {"overlay_hover_delay":"400","col":"6","pagelayer-id":"tlm8061"} -->
+<!-- sp:pagelayer/pl_list {"list_type":"none","spacing":"10","list_text_state":"normal","item_indent":"10","list_icon_state":"normal","icon_color":"#ff5722ff","icon_border_type":"","icon_border_color":"#cbd2dc78","icon_border_width":"3","icon_size":"12","list_color":"#fefefeff","pagelayer-id":"mgk1200"} -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"Courses","pagelayer-id":"jjg8601"} -->Courses<!-- /sp:pagelayer/pl_list_item -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"About","pagelayer-id":"r528706"} -->About<!-- /sp:pagelayer/pl_list_item -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"Contact","pagelayer-id":"r9g6656"} -->Contact<!-- /sp:pagelayer/pl_list_item -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"FAQs","pagelayer-id":"jig5937"} -->FAQs<!-- /sp:pagelayer/pl_list_item -->
+<!-- sp:pagelayer/pl_list_item {"show_icon":"true","icon":"fas fa-chevron-right","item":"News","pagelayer-id":"3g97836"} -->News<!-- /sp:pagelayer/pl_list_item -->
+<!-- /sp:pagelayer/pl_list -->
+<!-- /sp:pagelayer/pl_inner_col -->
+<!-- /sp:pagelayer/pl_inner_row -->
+<!-- /sp:pagelayer/pl_col -->
+<!-- sp:pagelayer/pl_col {"widget_space":"10","overlay_hover_delay":"400","col_width_mobile":"100","col_width_tablet":"30","col":"4","ele_padding_mobile":"15px,0px,0px,0px","pagelayer-id":"v682404"} -->
+<!-- sp:pagelayer/pl_heading {"heading_state":"normal","color":"#f6f6f6ff","heading_typo_mobile":",25,,,,,Solid,,,,","ele_margin":"0px,0px,0px,0px","ele_padding":"0px,0px,14px,0px","ele_padding_tablet":"0px,0px,0px,0px","ele_padding_mobile":"0px,0px,0px,0px","text":"\u003ch4\u003eInformation\u003c\/h4\u003e","pagelayer-id":"0ue1865"} --><h4>Information</h4><!-- /sp:pagelayer/pl_heading -->
+<!-- sp:pagelayer/pl_email {"icon":"far fa-envelope-open","color":"#f6f6f6ff","space":"15","icon_color":"#ff5722ff","ele_padding":"5px,0px,9px,0px","icon_size":"18","pagelayer-id":"rfo9134"} /-->
+<!-- sp:pagelayer/pl_phone {"icon":"fas fa-mobile-alt","color":"#ffffffff","space":"15","icon_color":"#ff5722ff","ele_padding":"0px,0px,9px,0px","icon_size":"18","pagelayer-id":"lv49350"} /-->
+<!-- sp:pagelayer/pl_address {"icon":"fas fa-map-marker-alt","color":"#fafafaff","space":"15","icon_color":"#ff5722ff","ele_padding":"0px,0px,9px,0px","icon_size":"18","typography":",15,,300,,,Solid,,,,","pagelayer-id":"61w1677"} /-->
+<!-- sp:pagelayer/pl_iconbox {"service_icon":"fas fa-globe","service_alignment":"left","service_vertical_alignment":"top","service_icon_view":"default","service_icon_padding":"8","service_icon_state":"normal","service_icon_color":"#ff5722ff","service_icon_font_size":"18","service_icon_hover_delay":"400","service_bor_state":"normal","service_heading":"www.betting.com","heading_alignment":"left","service_title_spacing":"0,0,1,12","heading_state":"normal","service_heading_color":"#fafafaff","service_heading_typo":",15,,100,,,Solid,,,,","heading_delay":"400","service_text_alignment":"center","service_btn_hover_delay":"400","service_icon_background_color":"","service_text":"\n","pagelayer-id":"4547740"} -->
+<!-- /sp:pagelayer/pl_iconbox -->
+<!-- /sp:pagelayer/pl_col -->
+<!-- /sp:pagelayer/pl_row -->
+<!-- sp:pagelayer/pl_row {"stretch":"auto","col_gap":"20","width_content":"auto","row_height":"default","overlay_hover_delay":"400","row_shape_top_color":"#fff","row_shape_top_width":"100","row_shape_top_height":"100","row_shape_bottom_color":"#fff","row_shape_bottom_width":"100","row_shape_bottom_height":"100","ele_bg_type":"color","ele_bg_color":"#242c42ff","content_pos":"center","border_width":"1px,0px,0px,0px","border_color":"#cccccc92","ele_padding":"0em,0em,0em,0em","ele_margin":"-2px,0px,0px,0px","pagelayer-id":"le34610"} -->
+<!-- sp:pagelayer/pl_col {"widget_space":"1","overlay_hover_delay":"400","col_width_mobile":"100","col_width_tablet":"50","col":"6","content_pos":"center","pagelayer-id":"5e56203"} -->
+<!-- sp:pagelayer/pl_copyright {"align":"center","color":"#ffffffff","align_mobile":"center","typography":",,,400,,,Solid,,,,","ele_padding":"0px,0px,0px,0px","copyright_text":"\u00a9 2021 Medlife Theme","pagelayer-id":"5jr8964"} /-->
+<!-- /sp:pagelayer/pl_col -->
+<!-- /sp:pagelayer/pl_row -->
