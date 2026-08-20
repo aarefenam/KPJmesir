@@ -1,0 +1,46 @@
+---
+# Deploy otomatis KPJ Mesir (kpjmesir.org)
+# Dijalankan oleh cPanel Git Version Control setiap kali deployment dipicu.
+# Semua task dijalankan berurutan dengan /bin/bash dari dalam folder repo.
+# Kalau ada satu task gagal (exit code != 0), deployment berhenti di situ.
+deployment:
+  tasks:
+    # ── Path dasar ────────────────────────────────────────────────────────
+    - export DEPLOYPATH=/home/kpjmesir/public_html
+    - export SRC="$PWD"
+    - export STAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    - /bin/echo "[$STAMP] === Deploy mulai dari $SRC -> $DEPLOYPATH ==="
+
+    # ── Pengaman: batalkan kalau docroot tidak ditemukan ──────────────────
+    - 'test -d "$DEPLOYPATH" || { /bin/echo "GAGAL - docroot $DEPLOYPATH tidak ditemukan"; exit 1; }'
+
+    # ── 1. Tema = kode. Dicerminkan penuh (--delete): file yang dihapus
+    #    di Git juga ikut terhapus di live, supaya tidak ada sisa file lama.
+    - /usr/bin/rsync -a --delete "$SRC/sitepad-data/themes/" "$DEPLOYPATH/sitepad-data/themes/"
+
+    # ── 2. Uploads = konten user. HANYA menambah, TIDAK PERNAH menghapus.
+    #    Gambar yang di-upload lewat admin SitePad tidak ada di Git, jadi
+    #    --delete di sini akan menghapus media live. Sengaja tidak dipakai.
+    - /usr/bin/rsync -a "$SRC/sitepad-data/uploads/" "$DEPLOYPATH/sitepad-data/uploads/"
+
+    # ── 3. Konfigurasi cache + halaman statis ─────────────────────────────
+    - /usr/bin/rsync -a "$SRC/sitepad-data/speedycache-config/" "$DEPLOYPATH/sitepad-data/speedycache-config/"
+    - /bin/cp -f "$SRC/sitepad-data/advanced-cache.php" "$DEPLOYPATH/sitepad-data/advanced-cache.php"
+    - /bin/cp -f "$SRC/sitepad-data/enable-advanced-cache.php" "$DEPLOYPATH/sitepad-data/enable-advanced-cache.php"
+    - /bin/cp -f "$SRC/underconstructions.html" "$DEPLOYPATH/underconstructions.html"
+
+    # ── CATATAN: index.php SENGAJA TIDAK di-deploy. ───────────────────────
+    #    File itu berisi kredensial database + AUTH_KEY/SALT milik server.
+    #    Kalau ditimpa dari Git, sekali saja password DB diganti di hosting,
+    #    seluruh website langsung mati. Biarkan versi live yang berlaku.
+
+    # ── 4. Bersihkan cache supaya perubahan tema langsung kelihatan ───────
+    - /bin/rm -rf "$DEPLOYPATH/sitepad-data/cache/speedycache"/*
+
+    # ── 5. Rapikan permission (cPanel menolak file 666/777) ───────────────
+    - /usr/bin/find "$DEPLOYPATH/sitepad-data" -type d -exec /bin/chmod 755 {} +
+    - /usr/bin/find "$DEPLOYPATH/sitepad-data" -type f -exec /bin/chmod 644 {} +
+
+    # ── 6. Catat hasil deploy di luar docroot (tidak bisa diakses publik) ─
+    - /bin/echo "[$STAMP] deployed $(cat "$SRC/.git/HEAD" >/dev/null 2>&1 && git rev-parse --short HEAD 2>/dev/null || echo unknown)" >> /home/kpjmesir/deploy.log
+    - /bin/echo "[$STAMP] === Deploy selesai ==="

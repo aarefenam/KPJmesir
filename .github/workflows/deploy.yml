@@ -1,0 +1,106 @@
+name: Deploy ke kpjmesir.org
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # tombol "Run workflow" manual di tab Actions
+
+# Cegah dua deploy jalan bersamaan. cPanel hanya sanggup satu deployment
+# per akun; kalau bertabrakan, yang kedua ditolak.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Pull di cPanel lalu jalankan .cpanel.yml
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Siapkan kunci SSH
+        env:
+          SSH_KEY: ${{ secrets.CPANEL_SSH_KEY }}
+          HOST: ${{ secrets.CPANEL_HOST }}
+          PORT: ${{ secrets.CPANEL_PORT }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          # Pin host key server. Jangan diganti StrictHostKeyChecking=no —
+          # itu membuat runner mau login ke server mana pun yang menyamar.
+          ssh-keyscan -p "$PORT" -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          test -s ~/.ssh/known_hosts || { echo "GAGAL: host key $HOST:$PORT tidak terbaca"; exit 1; }
+
+      - name: Pull commit terbaru + trigger deployment
+        env:
+          HOST: ${{ secrets.CPANEL_HOST }}
+          USER: ${{ secrets.CPANEL_USER }}
+          PORT: ${{ secrets.CPANEL_PORT }}
+          REPO: ${{ secrets.CPANEL_REPO_PATH }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/id_deploy -p "$PORT" -o BatchMode=yes "$USER@$HOST" \
+              REPO="$REPO" SHA="$SHA" 'bash -euo pipefail -s' <<'REMOTE'
+            echo "--- Repo di server: $REPO"
+            cd "$REPO"
+
+            # reset --hard, bukan pull: kalau file di klon server pernah
+            # tersentuh manual, pull akan konflik dan deploy macet.
+            # Klon ini murni cerminan GitHub, jadi aman ditimpa.
+            git fetch --prune origin main
+            git reset --hard origin/main
+
+            LOCAL_SHA="$(git rev-parse HEAD)"
+            echo "--- Commit di server : $LOCAL_SHA"
+            echo "--- Commit dari push : $SHA"
+            if [ "$LOCAL_SHA" != "$SHA" ]; then
+              echo "PERINGATAN: SHA berbeda (mungkin ada push lebih baru menyusul)."
+            fi
+
+            test -f .cpanel.yml || { echo "GAGAL: .cpanel.yml tidak ada di branch ini"; exit 1; }
+
+            echo "--- Memanggil cPanel UAPI VersionControlDeployment::create"
+            OUT="$(uapi --output=jsonpretty VersionControlDeployment create repository_root="$REPO" 2>&1)"
+            echo "$OUT"
+            # UAPI selalu exit 0; status asli ada di field "errors" pada JSON.
+            echo "$OUT" | grep -q '"errors" *: *null' || {
+              echo "GAGAL: cPanel menolak permintaan deployment (lihat 'errors' di atas)."
+              exit 1
+            }
+            echo "--- Deployment masuk antrean cPanel."
+          REMOTE
+
+      - name: Verifikasi hasil deploy
+        env:
+          HOST: ${{ secrets.CPANEL_HOST }}
+          USER: ${{ secrets.CPANEL_USER }}
+          PORT: ${{ secrets.CPANEL_PORT }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          # Deployment cPanel jalan asinkron di belakang layar. Tunggu sampai
+          # .cpanel.yml menulis short-SHA commit ini ke deploy.log (maks 3 menit).
+          SHORT="$(echo "$SHA" | cut -c1-7)"
+          ssh -i ~/.ssh/id_deploy -p "$PORT" -o BatchMode=yes "$USER@$HOST" \
+              SHORT="$SHORT" 'bash -euo pipefail -s' <<'REMOTE'
+            for i in $(seq 1 36); do
+              if grep -q "deployed $SHORT" "$HOME/deploy.log" 2>/dev/null; then
+                echo "--- Deploy commit $SHORT berhasil. 5 baris terakhir deploy.log:"
+                tail -n 5 "$HOME/deploy.log"
+                exit 0
+              fi
+              sleep 5
+            done
+            echo "GAGAL: commit $SHORT tidak muncul di deploy.log setelah 3 menit."
+            echo "Kemungkinan .cpanel.yml berhenti di tengah jalan."
+            echo "Cek cPanel > Git Version Control > Manage > Deployment History."
+            [ -f "$HOME/deploy.log" ] && tail -n 20 "$HOME/deploy.log"
+            exit 1
+          REMOTE
+
+      - name: Hapus kunci SSH
+        if: always()
+        run: rm -f ~/.ssh/id_deploy
